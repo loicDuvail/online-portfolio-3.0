@@ -1,0 +1,290 @@
+/* ///////// map ////////// */
+
+@media screen and (min-width: 1075px) {
+    #contact {
+        display: flex;
+        height: 100vh;
+        max-height: 100%;
+    }
+
+    #map-container {
+        position: relative;
+        height: 100%;
+        width: 50vw;
+        max-width: 50%;
+        margin-left: 50%;
+        background-color: rgb(35, 34, 34);
+    }
+
+    #contact-container {
+        width: 49%;
+        position: absolute;
+    }
+
+    #contact-title {
+        margin-left: 5vw;
+        margin-top: 11vh;
+        font-size: 40px;
+    }
+
+    #or-use-mail-adress-container {
+        margin-top: 15px;
+        display: flex;
+        align-items: center;
+        width: 45vw;
+    }
+}
+
+@media screen and (max-width: 1075px) and (min-width: 600px) {
+    #contact {
+        display: flex;
+        flex-direction: column;
+        height: fit-content;
+    }
+
+    #map-container {
+        position: relative;
+        margin-top: 20px;
+        height: 90vh;
+        width: 100vw;
+        max-width: 100%;
+        background-color: rgb(35, 34, 34);
+    }
+
+    #contact-container {
+        width: 90%;
+    }
+
+    #contact-title {
+        margin-left: 5vw;
+        margin-top: 4vh;
+        font-size: 40px;
+    }
+
+    #or-use-mail-adress-container {
+        margin-top: 15px;
+        display: flex;
+        align-items: center;
+        width: 90vw;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    #contact {
+        display: flex;
+        flex-direction: column;
+        height: fit-content;
+    }
+
+    #map-container {
+        position: relative;
+        height: 80vh;
+        width: 100vw;
+        max-width: 100%;
+        margin-top: 20px;
+        background-color: rgb(35, 34, 34);
+    }
+
+    #contact-container {
+        width: 100%;
+    }
+
+    #contact-title {
+        margin-left: 5vw;
+        margin-top: 4vh;
+        font-size: 40px;
+    }
+
+    #or-use-mail-adress-container {
+        margin-top: 15px;
+        display: flex;
+        align-items: center;
+        line-height: 1.5em;
+        width: 90vw;
+    }
+}
+
+#map {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    opacity: 0;
+    transition: opacity 400ms;
+}
+
+#map-loading-animation {
+    position: absolute;
+    height: 25px;
+    width: 25px;
+    top: calc(50% - 12.5px);
+    left: calc(50% - 12.5px);
+    border-radius: 50%;
+    border: 4px solid rgba(34, 34, 34, 0.484);
+    border-top: 4px solid white;
+    animation: spin 1s linear infinite;
+    z-index: 1;
+}
+
+.marker {
+    background-image: url("https://freesvg.org/img/Map-Pin.png");
+    background-size: cover;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    margin-top: -20px;
+}
+
+/* //////////// contact form ///////////// */
+
+#contact-text {
+    margin-left: 5vw;
+    width: 85%;
+}
+
+#contact-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: calc(5vw - 5px);
+    margin-top: 6vh;
+    width: 85%;
+}
+
+#email-name-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+
+input {
+    background-color: transparent;
+    padding: 9px;
+    color: rgb(28, 28, 28);
+    border: 1px solid black;
+    margin: 5px;
+    font-size: 17px;
+    outline: none;
+}
+
+#email-input,
+#name-input {
+    width: 100%;
+    height: 22px;
+}
+
+#message-input {
+    background-color: transparent;
+    padding: 9px;
+    color: rgb(28, 28, 28);
+    margin: 5px;
+    border: 1px solid black;
+    font-size: 17px;
+    outline: none;
+}
+
+#send-mail-button-container {
+    display: flex;
+    align-items: center;
+}
+
+#send-mail-button {
+    width: fit-content;
+    margin-left: 5px;
+    background-color: transparent;
+    color: rgb(82, 82, 82);
+    border: 1px solid black;
+    padding: 9px 20px 9px 20px;
+    font-size: 17px;
+    margin-top: 5px;
+}
+
+#send-mail-button:hover {
+    color: black;
+}
+
+#or-use-mail-adress-text {
+    width: fit-content;
+    margin-left: 5vw;
+}
+
+#copy-email-button {
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+/* //////// send mail loading animation ///////// */
+
+#loading-animation {
+    display: none;
+    height: 25px;
+    width: 25px;
+    margin-top: 5px;
+    margin-left: 12px;
+    border-radius: 50%;
+    border: 4px solid rgba(34, 34, 34, 0.484);
+    border-top: 4px solid white;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* ////////// copy email notice /////////// */
+
+#copy-alert {
+    position: fixed;
+    opacity: 0;
+    bottom: 30px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 1px 18px 1px 18px;
+    font-family: "Roboto", sans-serif;
+    font-size: medium;
+    background-color: black;
+    color: white;
+    border-radius: 50px;
+    z-index: 3;
+    transition: opacity 400ms;
+}
+
+#done-svg {
+    margin-left: 10px;
+}
+
+/* //////remove input autofill style/////// */
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+    border: 1px solid black;
+    -webkit-text-fill-color: lightgrey;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+/* ////////general purpose///////// */
+
+.unselectable {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}

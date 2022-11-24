@@ -1,0 +1,32 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Roboto:wght@300;400;500;700;900&display=swap");
+
+body {
+    margin: 0;
+    font-family: "Lato", sans-serif;
+    scroll-behavior: smooth;
+}
+
+body > div:nth-child(odd) {
+    background-color: rgb(250, 249, 249);
+}
+
+body > div {
+    height: 100vh;
+}
+
+.down-arrow {
+    color: white;
+    animation: blink infinite ease-in-out 2000ms;
+}
+
+@keyframes blink {
+    0% {
+        color: rgb(250, 249, 249);
+    }
+    50% {
+        color: rgb(161, 161, 161);
+    }
+    100% {
+        color: rgb(250, 249, 249);
+    }
+}

@@ -1,0 +1,161 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Roboto:wght@300;400;500;700;900&display=swap");
+
+body {
+    font-family: "lato", sans-serif;
+}
+
+#home-button:hover {
+    color: black;
+    border-color: black;
+}
+
+@media screen and (min-width: 1000px) {
+    #home-button {
+        margin-left: calc(2% + 1px);
+        margin-top: 25px;
+        margin-bottom: 20px;
+        color: grey;
+        border-color: grey;
+        transition: color 500ms ease-in-out, box-shadow 500ms ease-out,
+            border-color 500ms ease-out;
+    }
+
+    #content {
+        display: flex;
+        height: 75vh;
+        max-height: 75%;
+        margin-top: 30px;
+    }
+
+    #img-container {
+        display: flex;
+        flex-direction: column;
+        width: 50vw;
+        max-width: 50%;
+        height: 100%;
+    }
+
+    #text-container {
+        width: 44.5vw;
+        max-width: 44.5%;
+        height: 100%;
+        overflow-y: scroll;
+        padding: 10px;
+        padding-left: 3vw;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    #home-button {
+        margin-left: calc(4% + 1px);
+        margin-top: 25px;
+        margin-bottom: 20px;
+        color: grey;
+        border-color: grey;
+        transition: color 500ms ease-in-out, box-shadow 500ms ease-out,
+            border-color 500ms ease-out;
+    }
+
+    #content {
+        height: 75vh;
+        max-height: 75%;
+        margin-top: 30px;
+    }
+
+    #img-container {
+        display: flex;
+        flex-direction: column;
+        width: 100vw;
+        max-width: 100%;
+        height: fit-content;
+    }
+
+    #text-container {
+        width: 90vw;
+        max-width: 90%;
+        height: fit-content;
+        margin-top: 40px;
+        margin-bottom: 30px;
+        padding: 10px;
+        padding-left: 4vw;
+    }
+}
+
+#img-element {
+    width: 92%;
+    height: auto;
+    margin-left: 4%;
+    border-radius: 4px;
+    overflow: hidden;
+    border: 1px solid rgb(171, 171, 171);
+}
+
+#project-title {
+    font-size: 50px;
+    margin-top: -20px;
+}
+
+#about-container {
+    margin-top: 60px;
+}
+
+#about-title {
+    font-size: 30px;
+}
+
+#about {
+    width: 80%;
+    line-height: 1.4em;
+}
+
+#what-i-learned-title {
+    font-size: 30px;
+    margin-top: 45px;
+}
+
+#what-i-learned {
+    width: 80%;
+    line-height: 1.4em;
+}
+
+#project-btns {
+    margin-top: 60px;
+    display: flex;
+    margin-bottom: 40px;
+}
+
+.button {
+    display: flex;
+    font-size: 20px;
+    padding: 10px 20px 10px 20px;
+    background-color: white;
+    border: 1px solid black;
+    width: fit-content;
+    border-radius: 5px;
+    transition: box-shadow 300ms ease-out;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+}
+
+.button:hover {
+    box-shadow: 3px 3px 7px rgba(24, 24, 24, 0.108);
+}
+
+#live-demo-btn {
+    margin-left: 5%;
+    font-size: 18px;
+}
+
+#git-btn {
+    font-size: 18px;
+}
+
+svg {
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    margin-left: -3px;
+    font-size: 1.5em;
+    margin-right: 7px;
+}

@@ -1,0 +1,24 @@
+.carousel {
+    display: flex;
+}
+
+#projects {
+    overflow: hidden;
+    position: relative;
+}
+
+#projects > h2 {
+    margin: 39px;
+    font-size: 30px;
+}
+
+#carousel-top {
+    position: absolute;
+    top: 32vh;
+    transform: translate(0, -50%);
+}
+#carousel-bottom {
+    position: absolute;
+    top: 73vh;
+    transform: translate(0, -50%);
+}

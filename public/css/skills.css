@@ -1,0 +1,191 @@
+@media screen and (min-width: 1000px) {
+    #skills {
+        display: flex;
+        height: 100vh;
+        max-height: 100%;
+    }
+
+    #skills-display {
+        width: 40vw;
+        margin-left: 5vw;
+        margin-top: 150px;
+        box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.104);
+        height: fit-content;
+        overflow: hidden;
+        border-radius: 5px;
+    }
+
+    #animation-code-container {
+        position: relative;
+        width: 45%;
+        height: 60%;
+        margin-left: 3%;
+        margin-top: 20vh;
+    }
+
+    #show-code-button {
+        position: absolute;
+        display: inline-block;
+        top: 25vh;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 3;
+        background-color: black;
+        border: 1px solid black;
+        border-radius: 4px;
+        box-shadow: white 4px 4px 0 0, black 4px 4px 0 1px;
+        box-sizing: border-box;
+        color: white;
+        cursor: default;
+        font-family: ITCAvantGardeStd-Bk, Arial, sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 20px;
+        margin: 0 5px 10px 0;
+        padding: 12px 40px;
+        text-align: center;
+        touch-action: manipulation;
+        user-select: none;
+        -webkit-user-select: none;
+        vertical-align: middle;
+        white-space: nowrap;
+        opacity: 0;
+        transition: opacity 300ms ease-out;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    #skills {
+        display: flex;
+        flex-direction: column;
+        height: fit-content;
+        min-height: 100vh;
+    }
+
+    #skills-display {
+        width: calc(88vw);
+        margin-left: 5vw;
+        margin-top: 50px;
+        box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.104);
+        height: fit-content;
+        overflow: hidden;
+        border-radius: 5px;
+    }
+
+    #animation-code-container {
+        position: relative;
+        width: 90%;
+        height: 60vh;
+        margin-left: 5%;
+        margin-top: 2vh;
+    }
+
+    #show-code-button {
+        position: absolute;
+        display: inline-block;
+        top: 18vh;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 3;
+        background-color: black;
+        border: 1px solid black;
+        border-radius: 4px;
+        box-shadow: white 4px 4px 0 0, black 4px 4px 0 1px;
+        box-sizing: border-box;
+        color: white;
+        cursor: default;
+        font-family: ITCAvantGardeStd-Bk, Arial, sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 20px;
+        margin: 0 5px 10px 0;
+        padding: 12px 40px;
+        text-align: center;
+        touch-action: manipulation;
+        user-select: none;
+        -webkit-user-select: none;
+        vertical-align: middle;
+        white-space: nowrap;
+        opacity: 0;
+        transition: opacity 300ms ease-out;
+    }
+}
+
+.skill {
+    width: calc(100% - 20px);
+    padding: 10px;
+    border-bottom: 1px solid black;
+    align-items: center;
+    line-height: 1.4em;
+}
+
+#skills-selector {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    border: 1px solid white;
+    border-top: 2px solid white;
+    border-left: 2px solid white;
+    border-right: 2px solid white;
+    color: rgb(21, 21, 21);
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.skill-option {
+    width: 33.3%;
+    height: 26px;
+    text-align: center;
+    border-right: 1px solid white;
+    cursor: pointer;
+    padding: 20px 0;
+}
+
+.skill-option:last-child {
+    border: none;
+}
+
+#skills-list-container > :last-child {
+    border-bottom: none;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+#skills-list-container > :nth-child(even) {
+    background-color: rgb(32, 32, 32);
+    color: rgb(239, 239, 239);
+}
+
+#canvas {
+    position: absolute;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: transparent;
+    bottom: 0px;
+}
+
+#code-display-parent {
+    position: absolute;
+    overflow: hidden;
+    width: 100%;
+    height: 50vh;
+    left: 50%;
+    transform: translate(-50%);
+    border-radius: 10px;
+    z-index: 2;
+}
+
+#code-display {
+    width: 100%;
+    height: 100%;
+    background-color: rgb(30, 30, 30);
+    color: rgb(135, 223, 243);
+    padding: 15px;
+    overflow-y: scroll;
+    overflow-x: scroll;
+    margin-top: -7px;
+    font-size: medium;
+    line-height: 120%;
+    opacity: 0;
+    transition: opacity 300ms ease-out;
+}
