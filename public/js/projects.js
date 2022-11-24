@@ -55,6 +55,7 @@ function createNameContainer(name, id) {
     nameContainer.style.opacity = 0;
     nameContainer.style.zIndex = 2;
     nameContainer.style.transition = "opacity 300ms ease-in-out";
+    nameContainer.classList.add("project-name-container");
     nameContainer.onmouseover = () => {
         nameContainer.style.opacity = 0.8;
     };

@@ -17,8 +17,13 @@
     top: 32vh;
     transform: translate(0, -50%);
 }
+
 #carousel-bottom {
     position: absolute;
     top: 73vh;
     transform: translate(0, -50%);
+}
+
+.project-name-container {
+    cursor: pointer;
 }
