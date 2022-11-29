@@ -15,7 +15,7 @@ function animateHome() {
 
     setTimeout(() => {
         hr.style.opacity = 1;
-    }, 1600);
+    }, 1300);
 
     setTimeout(() => {
         writeInParent(sub, subTitle, 70);
@@ -27,7 +27,7 @@ function animateHome() {
         setTimeout(() => {
             downArrow.style.opacity = 1;
         }, 3500);
-    }, 2600);
+    }, 2200);
 }
 
 function writeInParent(text, parent, msInterval) {
