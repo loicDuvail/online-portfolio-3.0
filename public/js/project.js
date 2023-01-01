@@ -32,6 +32,7 @@ function displayProject(project) {
         live_demo_link,
     } = project;
     imgEl.src = img;
+    imgEl.onclick = () => window.open(live_demo_link);
     projectTitle.innerText = project_name;
     about.innerText = parseText(description);
     whatILearned.innerText = parseText(what_i_learned);
