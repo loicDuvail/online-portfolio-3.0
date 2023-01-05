@@ -5,11 +5,21 @@ const express = require("express");
 const cookieParser = require("cookie-parser");
 const path = require("path");
 const nodemailer = require("nodemailer");
-const serveFnGen = require("./staticServe");
-const pool = require("./DB-connection");
+const serveFnGen = require("./modules/staticServe");
+const pool = require("./modules/DB-connection");
+const SHA256 = require("./modules/SHA256");
+const Sessions = require("./modules/sessions");
+const auth = require("./modules/auth");
+const { v4 } = require("uuid");
+const e = require("express");
+Sessions.ageSessions(30000);
 
 const app = express();
-app.use(express.json(), cookieParser());
+app.use(
+    express.json(),
+    cookieParser(),
+    auth(["/adminSide/connected", "/private-api"], ["/adminSide", false])
+);
 
 const serve = serveFnGen(app);
 
@@ -36,6 +46,14 @@ app.get("/", (req, res) =>
 app.get("/project/:id", (req, res) => {
     res.cookie("project_id", req.params.id, { sameSite: true });
     res.sendFile(path.join(__dirname, "../public/html/project.html"));
+});
+
+app.get("/adminSide", (req, res) =>
+    res.sendFile(path.join(__dirname, "../public/html/login.html"))
+);
+
+app.get("/adminSide/connected", (req, res) => {
+    res.sendFile(path.join(__dirname, "../public/html/adminSide.html"));
 });
 
 //////////// methods ////////////
@@ -73,21 +91,18 @@ ______________________________________
 });
 
 app.get("/getProjects", (req, res) => {
-    pool.query(
-        `SELECT id, project_name, img FROM projects`,
-        (error, response) => {
-            if (error)
-                return (
-                    res.send({ error }).status(500),
-                    console.log(
-                        error +
-                            `
+    pool.query(`SELECT * FROM projects`, (error, response) => {
+        if (error)
+            return (
+                res.send({ error }).status(500),
+                console.log(
+                    error +
+                        `
         `
-                    )
-                );
-            res.send(response).status(200);
-        }
-    );
+                )
+            );
+        res.send(response).status(200);
+    });
 });
 
 app.get("/getProject", (req, res) => {
@@ -101,6 +116,48 @@ app.get("/getProject", (req, res) => {
             res.send(response[0]);
         }
     );
+});
+
+app.post("/private-api/updateProject", (req, res) => {
+    const { updatedProject } = req.body;
+    const {
+        id,
+        name,
+        description,
+        what_i_learned,
+        img,
+        git_link,
+        live_demo_link,
+    } = updatedProject;
+
+    let request = `UPDATE projects SET project_name = "${name}",description = "${description}",what_i_learned = "${what_i_learned}",img = "${img}",git_link = "${git_link}",live_demo_link = "${live_demo_link}" WHERE id = ${id}`;
+
+    pool.query(request, (err, response) => {
+        if (err)
+            return console.error(err), res.status(500).send({ error: err });
+        res.status(200).send({ ok: "project successfuly updated" });
+    });
+});
+
+const TWO_HOURS_ms = 7200_000;
+app.post("/api/login", (req, res) => {
+    const { password } = req.body;
+    if (
+        SHA256(password) ===
+        "aec4fb61a155929f2c270df1842de97feda69ac7d5ec68fadbd4275c22a627df"
+    ) {
+        const sessionId = Sessions.createSession(v4(), TWO_HOURS_ms);
+        res.cookie("session_id", sessionId);
+        res.status(200).send({ ok: "successfuly logged in as admin" });
+    } else {
+        res.status(401).send({ error: "Forbidden, wrong password" });
+    }
+});
+
+app.post("/private-api/logout", (req, res) => {
+    const { session_id } = req.cookies;
+    Sessions.killSession(session_id, "user logged out");
+    res.status(200).send({ ok: "successfuly logged out" });
 });
 
 /////////// error handling //////////
